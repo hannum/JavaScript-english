@@ -186,7 +186,8 @@ server and browser programming is usually much simpler than XML. E.g:
 
 The example above describes an array (square brackets []) that contains two objects (braces {}). Later we will use this
 data in an example on how easy it is to fetch and process data in JSON format. But before that, we have to take a look
-at the concept of a promise, which is the foundation of asynchronous functions in modern JavaScript.
+at the concept of a promise and the Fetch API, which are the foundation of asynchronous HTTP requests in modern
+JavaScript.
 
 ## [promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
@@ -205,7 +206,7 @@ The advantages of the promise are e.g. simpler syntax and easier error handling.
 
 ## [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 
-Fetch is a promise-based way to make HTTP requests. Compared to the
+Fetch is a promise-based way to make HTTP requests in JavaScript. Compared to the
 original [XMLHTTPRequest object](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest), Fetch is more
 powerful, more flexible, and simpler in larger applications because it does not have to deal with so-called callback
 hell and handling errors is easier.
@@ -221,7 +222,6 @@ In this example, the data of the second picture of the earlier JSON sample is re
 document:
 
 ```html
-
 <figure>
     <img>
     <figcaption></figcaption>
@@ -252,7 +252,6 @@ with [try...catch](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 handling.
 
 ```html
-
 <figure>
     <img>
     <figcaption></figcaption>
