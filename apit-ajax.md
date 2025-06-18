@@ -184,8 +184,41 @@ server and browser programming is usually much simpler than XML. E.g:
 ]
 ```
 
-The example above describes an array (square brackets []) that contains two objects (braces {}). In this example, the
-data of the second picture is retrieved and displayed in an HTML document:
+The example above describes an array (square brackets []) that contains two objects (braces {}). Later we will use this
+data in an example on how easy it is to fetch and process data in JSON format. But before that, we have to take a look
+at the concept of a promise, which is the foundation of asynchronous functions in modern JavaScript.
+
+## [promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+A promise is a JavaScript object that represents the eventual completion or failure of an asynchronous operation and the
+resulting
+value of that operation. The resulting value is either a fulfillment value of the asynchronous operation, or a rejection
+reason (e.g. a network error occurred). Promise won't freeze your program while waiting for the value.
+
+A promise may be in one of 3 possible states: fulfilled, rejected, or pending.
+Collective term "settled" is also used to mean "fulfilled or rejected."
+
+![Promise flowchart](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/promises.png)
+
+In modern JavaScript, promise is used instead of [callback functions](extras.md#callback-functions-and-callback-hell).
+The advantages of the promise are e.g. simpler syntax and easier error handling.
+
+## [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+
+Fetch is a promise-based way to make HTTP requests. Compared to the
+original [XMLHTTPRequest object](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest), Fetch is more
+powerful, more flexible, and simpler in larger applications because it does not have to deal with so-called callback
+hell and handling errors is easier.
+
+The ES8 version of JavaScript introduced the syntax
+of [async / await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) to
+simplify the use of promises and especially error handling. With async / await syntax, functions that return a promise
+are handled in much the same way as synchronous functions. The difference is that the function that returns the promise
+must be written inside another asynchronous (async) function. In addition, await is written in front of the function
+call.
+
+In this example, the data of the second picture of the earlier JSON sample is retrieved and displayed in an HTML
+document:
 
 ```html
 
@@ -213,34 +246,6 @@ data of the second picture is retrieved and displayed in an HTML document:
     showPics(); // call function to start download
 </script>
 ```
-
-## [promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-
-A promise is an object that represents the eventual completion or failure of an asynchronous operation and the resulting
-value of that operation. The resulting value is either a fulfillment value of the asynchronous operation, or a rejection
-reason (e.g. a network error occurred). Promise won't freeze your program while waiting for the value.
-
-A promise may be in one of 3 possible states: fulfilled, rejected, or pending.
-Collective term "settled" is also used to mean "fulfilled or rejected."
-
-![Promise flowchart](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/promises.png)
-
-In modern JavaScript, promise is used instead of [callback functions](extras.md#callback-functions-and-callback-hell).
-The advantages of the promise are e.g. simpler syntax and easier error handling.
-
-## [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
-
-Fetch is a promise-based way to make Ajax applications. Compared to the
-original [XMLHTTPRequest object](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest), Fetch is more
-powerful, more flexible, and simpler in larger applications because it does not have to deal with so-called callback
-hell and handling errors is easier.
-
-The ES8 version of JavaScript introduced the syntax
-of [async / await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) to
-simplify the use of promises and especially error handling. With async / await syntax, functions that return a promise
-are handled in much the same way as synchronous functions. The difference is that the function that returns the promise
-must be written inside another asynchronous (async) function. In addition, await is written in front of the function
-call.
 
 Here's the above example using async / await syntax, but now
 with [try...catch](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) error
@@ -275,7 +280,8 @@ handling.
 </script>
 ```
 
-Here is another example that shows how to submit a form using the fetch method. Note that `fetch()` and `json()`
+Below is an example that shows how to make a HTTP request that submits a form using the fetch method. Note that
+`fetch()` and `json()`
 functions both return a promise. Hence, you need use the await keyword to wait for the promise to
 be fulfilled, which in this case that means that the data has been loaded.
 
