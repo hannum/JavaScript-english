@@ -20,13 +20,14 @@ document.querySelector('.button')
 
 That is, most commands can be typed without the word `window`.
 
-### Window functions for user interaction
+### Window methods for user interaction
 
-The window interface provides simple functions for user interactions discussed in the module 1, such
+As discussed in the module 1, the window interface provides methods for simple user interaction, such
 as the [alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) for notifications
 and the [prompt](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt) for user input.
 
-The [confirm](https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm) function opens a pop-up window with text and two buttons: OK and Cancel. This allows the user to be
+The [confirm](https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm) function opens a pop-up window with text
+and two buttons: OK and Cancel. This allows the user to be
 asked to accept or reject an action.
 
 ```javascript
@@ -36,19 +37,16 @@ const answer = confirm('Some question');
 console.log(answer);
 ```
 
-* The response of the function is a boolean value which is store in the `answer` variable: OK = true and Cancel = false.
+* The response of the function is a boolean value which is stored in the `answer` variable: OK = true and Cancel =
+  false.
 
 ##### Task: Try the confirm function in the browser console.
-
-* `answer` is a string in which the user's answer is stored. If the text field is empty, the value becomes _null_. The
-  second paramater is optional. It automatically appears in the text field.
-
-##### Task: Try the prompt function in the browser console.
 
 ## [navigator-interface](https://developer.mozilla.org/en-US/docs/Web/API/navigator)
 
 The `navigator` interface can be used to retrieve information about the browser. For
-example, [navigator.gelocation](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition) returns
+example, [navigator.geolocation](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition)
+returns
 the gps coordinates of the device:
 
 ```html
@@ -310,7 +308,7 @@ see [classList documentation](https://developer.mozilla.org/en-US/docs/Web/API/E
 # Event handling
 
 Because JavaScript is used to add interactivity to a website, there is a need for some way to respond to actions and
-events performed by the user or on the system.This method is
+events performed by the user or on the system. This method is
 called [event handling.](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events)
 
 For example, if a user clicks a button, we can respond by displaying an information box:
@@ -361,48 +359,17 @@ In the example code above, this item is the `<button>` element.
 Most important at this point are
 the [mouse related events](https://developer.mozilla.org/en-US/docs/Web/API/Element#mouse_events).
 
-## Syntax
+## Alternative syntaxes for event handling
 
-Three different syntaxes can be used in event handling.
+Three different syntaxes exists for event handling, introduced in the language as it has evolved. The earliest
+one is from 1990s. It is an inline syntax where the event handler is specified in the HTML code. In 2000s, on event
+properties for HTML elements were introduced for handling events. An overview of these two syntaxes
+is [available here.](event-handling-syntax.md)
 
-### Old (90s)
+It is not recommended to use the old approaches. Instead, use the modern addEventListener introduced above.
 
-Inline syntax where the event handler is specified in the HTML code. This method should be avoided. Admittedly, some
-frameworks and libraries, such as Angular and React, use a syntax like this, but they are special cases.
-
-```html
-
-<button onclick="popup()">Click me</button>
-<script>
-    function popup(evt) {
-        alert('Element' + evt.currentTarget + ' was clicked');
-    }
-</script> 
-```
-
-### Traditional (2000s)
-
-[Onevent properties](https://developer.mozilla.org/en-US/docs/Web/Events/Event_handlers#using_onevent_properties) are a
-handy way to do transaction processing. They are recommended for use only in the simplest applications.
-
-```html
-
-<button>Click me</button>
-<script>
-    const button = document.querySelector('button');
-
-    function popup(evt) {
-        alert('Element' + evt.currentTarget + ' was clicked');
-    }
-
-    button.onclick = popup;
-</script>
-```
-
-### Modern (present)
-
-[addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) function method is
-recommended for most applications. It can be used to add more than one event handler to the same event, or the event can
+[addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)  can be used to add
+more than one event handler to the same event, or the event can
 be canceled at different stages of the application as needed using
 the [removeEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener) function.
 Such a function may be required, for example, when you want the first click of a button to perform function A and the
