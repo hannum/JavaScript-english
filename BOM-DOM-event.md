@@ -359,10 +359,10 @@ In the example code above, this item is the `<button>` element.
 Most important at this point are
 the [mouse related events](https://developer.mozilla.org/en-US/docs/Web/API/Element#mouse_events).
 
-## Alternative syntaxes for event handling
+### Alternative syntaxes for event handling
 
 Three different syntaxes exists for event handling, introduced in the language as it has evolved. The earliest
-one is from 1990s. It is an inline syntax where the event handler is specified in the HTML code. In 2000s, on event
+one is from 1990s. It is an inline syntax where the event handler is specified in the HTML code. In 2000s, onEvent
 properties for HTML elements were introduced for handling events. An overview of these two syntaxes
 is [available here.](event-handling-syntax.md)
 
