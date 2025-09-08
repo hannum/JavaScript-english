@@ -213,12 +213,15 @@ hell and handling errors is easier.
 
 The ES8 version of JavaScript introduced the syntax
 of [async / await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) to
-simplify the use of promises and especially error handling. With async / await syntax, functions that return a promise
-are handled in much the same way as synchronous functions. The difference is that the function that returns the promise
-must be written inside another asynchronous (async) function. In addition, await is written in front of the function
-call.
+simplify the use of promises and especially error handling. With async / await syntax, asynchronous functions that return a promise
+are handled in much the same way as synchronous functions. There are two differences: 1. the asynchronous function that 
+returns the promise must be written inside another asynchronous (async) function and 2. await is written in front of the function call.
 
-In this example, the data of the second picture of the earlier JSON sample is retrieved and displayed in an HTML
+await suspends the execution of async function until the returned promise is fulfilled or rejected.  
+The control of execution is returned back to the system, which allows the execution of other parts of your program.
+When the promise awaited upon settles, the runtime will continue executing your async function.
+
+In the example below, the data of the second picture of the earlier JSON sample is retrieved and displayed in an HTML
 document:
 
 ```html
@@ -249,7 +252,8 @@ document:
 
 Here's the above example using async / await syntax, but now
 with [try...catch](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) error
-handling.
+handling. In case the promise returned by the `await fetch(...)` rejects due to the error in fetching the pictures, 
+execution continues from the catch-block.
 
 ```html
 <figure>
